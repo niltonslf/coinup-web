@@ -11,7 +11,7 @@ export default function Home() {
         </div>
         <nav className='flex flex-row items-center gap-10'>
           <span>Sign Up</span>
-          <Button>Sign In</Button>
+          <Button href='/login'>Sign In</Button>
         </nav>
       </header>
 
@@ -25,7 +25,7 @@ export default function Home() {
             and guarantee full control of your finances.
           </p>
 
-          <Button>Try for free</Button>
+          <Button href='/login'>Try for free</Button>
         </article>
       </main>
       <div className="absolute right-0 top-0 z-0 h-full w-7/12 flex-1  bg-[url('/home-bg.png')] bg-cover bg-[right_top_10%] bg-no-repeat "></div>
