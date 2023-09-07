@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function App() {
   return (
     <main className='flex h-screen w-screen items-center justify-center bg-gray-100'>
-      <section className='flex w-4/12 flex-wrap rounded-md bg-white px-5 py-14'>
+      <section className='flex w-4/12 flex-wrap rounded-md bg-white px-5 py-14 shadow-md'>
         <div className='mb-10 flex  w-full justify-center'>
           <Image src='/logo.svg' alt='coinup logo' width={200} height={100} />
         </div>
