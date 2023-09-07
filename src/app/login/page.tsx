@@ -1,7 +1,7 @@
 import {Button, Input} from '@/components';
 import Image from 'next/image';
 
-export default function App() {
+export default function Login() {
   return (
     <main className='flex h-screen w-screen items-center justify-center bg-gray-100'>
       <section className='flex w-4/12 flex-wrap rounded-md bg-white px-5 py-14 shadow-md'>
