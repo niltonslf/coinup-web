@@ -1,6 +1,5 @@
-import {Button} from '@/components';
+import {LinkButton} from '@/components';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -11,7 +10,7 @@ export default function Home() {
         </div>
         <nav className='flex flex-row items-center gap-10'>
           <span>Sign Up</span>
-          <Button href='/login'>Sign In</Button>
+          <LinkButton href='/login'>Sign In</LinkButton>
         </nav>
       </header>
 
@@ -25,7 +24,7 @@ export default function Home() {
             and guarantee full control of your finances.
           </p>
 
-          <Button href='/login'>Try for free</Button>
+          <LinkButton href='/login'>Try for free</LinkButton>
         </article>
       </main>
       <div className="absolute right-0 top-0 z-0 h-full w-7/12 flex-1  bg-[url('/home-bg.png')] bg-cover bg-[right_top_10%] bg-no-repeat "></div>

@@ -1,7 +1,29 @@
+'use client';
+
 import {Button, Input} from '@/components';
+import {zodResolver} from '@hookform/resolvers/zod';
 import Image from 'next/image';
+import {useForm} from 'react-hook-form';
+import * as z from 'zod';
+
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+});
 
 export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+  } = useForm({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = (values: any) => {
+    console.log({values});
+  };
+
   return (
     <main className='flex h-screen w-screen items-center justify-center bg-gray-100'>
       <section className='flex w-4/12 flex-wrap rounded-md bg-white px-5 py-14 shadow-md'>
@@ -11,18 +33,24 @@ export default function Login() {
         <h1 className=' mb-5 w-full text-center text-2xl font-semibold'>
           Access your account
         </h1>
-        <form className='flex w-full flex-col gap-3'>
+        <form
+          className='flex w-full flex-col gap-3'
+          onSubmit={handleSubmit(onSubmit)}>
           <label className='flex flex-col gap-2'>
             <span className='font-semibold'>Your email</span>
-            <Input name='email' />
+            <Input {...register('email')} isInvalid={Boolean(errors.email)} />
           </label>
 
           <label className='mb-5 flex flex-col gap-2'>
             <span className='font-semibold'>Your password</span>
-            <Input name='password' />
+            <Input
+              {...register('password')}
+              type='password'
+              isInvalid={Boolean(errors.password)}
+            />
           </label>
 
-          <Button href='/'>Login</Button>
+          <Button type='submit'>Login</Button>
         </form>
 
         <div className='relative w-full py-10'>

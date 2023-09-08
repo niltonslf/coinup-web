@@ -1,17 +1,18 @@
-import Link from 'next/link';
 import {ReactNode} from 'react';
 
 type ButtonProps = {
   children: ReactNode;
-  href: string;
+  onClick?: () => void;
+  type?: 'button' | 'submit';
 };
 
-export const Button = ({children, href}: ButtonProps) => {
+export const Button = ({children, type = 'button', onClick}: ButtonProps) => {
   return (
-    <Link
-      href={href}
-      className='flex items-center justify-center rounded-lg bg-primary px-14 py-3 text-white'>
+    <button
+      type={type}
+      onClick={onClick}
+      className='flex items-center justify-center rounded-lg bg-primary px-14 py-3 text-white hover:bg-primary/80'>
       {children}
-    </Link>
+    </button>
   );
 };

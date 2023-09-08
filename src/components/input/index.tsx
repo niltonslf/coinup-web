@@ -1,12 +1,19 @@
-import React from 'react';
+import {InputHTMLAttributes, forwardRef} from 'react';
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  isInvalid?: boolean;
+}
 
-export const Input = ({...props}: InputProps) => {
-  return (
-    <input
-      className='border-1 rounded-md border border-gray-300 p-2'
-      {...props}
-    />
-  );
-};
+export const Input = forwardRef(
+  ({className, isInvalid = false, ...props}: InputProps, ref: any) => {
+    return (
+      <input
+        ref={ref}
+        {...props}
+        className={`border-1 rounded-md border  p-2 ${className ?? ''} ${
+          isInvalid ? 'border-red-400' : 'border-gray-300'
+        }`}
+      />
+    );
+  },
+);
