@@ -30,7 +30,11 @@ export default function Login() {
 
   const onSubmit = (values: AuthLogin) => {
     login(values, {
-      onSuccess: () => router.push('/app'),
+      onSuccess: data => {
+        console.log({data});
+
+        // router.push('/app')
+      },
       onError: () => console.log('error to auth'),
     });
   };
