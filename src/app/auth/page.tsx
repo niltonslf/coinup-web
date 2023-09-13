@@ -1,14 +1,14 @@
 'use client';
 
 import {Button, Input} from '@/components';
-import {useSignIn} from '@/data/usecases/auth-user';
 import {AuthLogin} from '@/models';
 import {zodResolver} from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import {useForm} from 'react-hook-form';
 import * as z from 'zod';
 
-import {useRouter} from 'next/navigation';
+import {redirect, useRouter} from 'next/navigation';
+import {signIn} from 'next-auth/react';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -16,8 +16,6 @@ const loginSchema = z.object({
 });
 
 export default function Login() {
-  const {mutate: login} = useSignIn();
-
   const router = useRouter();
 
   const {
@@ -28,15 +26,13 @@ export default function Login() {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (values: AuthLogin) => {
-    login(values, {
-      onSuccess: data => {
-        console.log({data});
-
-        // router.push('/app')
-      },
-      onError: () => console.log('error to auth'),
+  const onSubmit = async (values: AuthLogin) => {
+    await signIn('credentials', {
+      email: values.email,
+      password: values.password,
+      redirect: false,
     });
+    router.push('/app');
   };
 
   return (
