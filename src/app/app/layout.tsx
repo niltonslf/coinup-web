@@ -1,6 +1,6 @@
 'use client';
 
-import {Session} from 'next-auth';
+import {Header} from '@/components';
 import {SessionProvider} from 'next-auth/react';
 import {ReactNode} from 'react';
 
@@ -9,5 +9,12 @@ type LayoutProps = {
 };
 
 export default function layout({children}: LayoutProps) {
-  return <SessionProvider>{children}</SessionProvider>;
+  return (
+    <SessionProvider>
+      <main className='flex h-screen w-screen flex-col'>
+        <Header />
+        {children}
+      </main>
+    </SessionProvider>
+  );
 }

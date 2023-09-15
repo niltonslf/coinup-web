@@ -7,7 +7,7 @@ export default function App() {
   console.log({data, status});
 
   return (
-    <main className='flex h-screen w-screen items-center justify-center bg-gray-400'>
+    <main className='flex h-full w-full items-center justify-center bg-gray-400'>
       {data?.user?.name}
     </main>
   );
