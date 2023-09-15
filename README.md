@@ -1,3 +1,3 @@
 # Under construction
 
-## [Preview](https://coinup-web-git-main-niltonslf.vercel.app/)
+## [Preview](https://coinup-web.vercel.app/)
